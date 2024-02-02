@@ -24,7 +24,7 @@
     "@mantine/nprogress": "^7.5.0",
     "@mantine/spotlight": "^7.5.0",
     "@next/eslint-plugin-next": "^14.1.0",
-    "@tabler/icons-react": "^2.46.0",
+    "@tabler/icons-react": "^2.47.0",
     "@tauri-apps/api": "^1.5.3",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "clsx": "^2.1.0",
