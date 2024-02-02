@@ -1,0 +1,22 @@
+{
+  "name": "Codespace Container",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/rust:1": {
+      "profile": "minimal"
+    }
+  },
+  "postStartCommand": "./setup.sh",
+  "extensions": [
+    "cschleiden.vscode-github-actions",
+    "matklad.rust-analyzer",
+    "serayuzgur.crates",
+    "vadimcn.vscode-lldb",
+    "usernamehw.errorlens",
+    "bungcip.better-toml"
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
+  }
+}

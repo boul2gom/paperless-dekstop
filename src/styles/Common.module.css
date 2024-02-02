@@ -1,0 +1,26 @@
+.common-styles {
+    --common-background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+
+    --common-raw-border: rem(1px) solid;
+    --common-border: var(--common-raw-border) light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    --common-grey-border: var(--common-raw-border) var(--mantine-color-gray-3);
+
+    --common-hover-background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+    --common-hover-color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+
+    --common-color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+
+    --window-height: rem(768px);
+    --window-width: rem(1366px);
+
+    --navigation-width: rem(260px);
+    --navigation-height: var(--window-height);
+
+    --top-container-height: rem(75px);
+    --top-container-width: calc(var(--window-width) - var(--navigation-width) - 2 * var(--mantine-spacing-md));
+
+    --content-container-height: calc(var(--window-height) - var(--top-container-height));
+    --content-container-width: calc(var(--window-width) - var(--navigation-width));
+
+    --icon-size: calc(2.125rem * var(--mantine-scale));
+}

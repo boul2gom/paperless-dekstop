@@ -1,0 +1,112 @@
+@import "./Common.module.css";
+
+.navigation {
+    composes: common-styles from "./Common.module.css";
+
+    margin-left: calc(var(--mantine-spacing-md) * -1);
+    margin-right: calc(var(--mantine-spacing-md) * -1);
+}
+
+.logo {
+    margin-top: 5px;
+    margin-bottom: 0;
+    border-bottom: var(--common-border);
+    padding-bottom: var(--mantine-spacing-xs);
+}
+
+.release_block {
+    margin-top: 10px;
+}
+
+.navigation_category {
+    font-weight: 500;
+    width: 100%;
+
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    font-size: var(--mantine-font-size-sm);
+    color: var(--mantine-color-text);
+}
+
+.category_link {
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+
+    font-size: var(--mantine-font-size-sm);
+    color: var(--common-color);
+
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+    margin-left: var(--mantine-spacing-xl);
+    border-left: var(--common-border);
+}
+
+.category_chevron {
+    transition: transform 200ms ease;
+}
+
+.category_links_inner {
+    padding-top: var(--mantine-spacing-xs);
+    padding-bottom: var(--mantine-spacing-xs);
+}
+
+.navigation_category:hover {
+    background-color: var(--common-hover-background-color);
+    color: var(--common-hover-color);
+}
+
+.category_link:hover {
+    background-color: var(--common-hover-background-color);
+    color: var(--common-hover-color);
+}
+
+.search_bar {
+    width: 500px;
+    height: rem(35px);
+
+    padding-right: rem(4px);
+    padding-left: var(--mantine-spacing-sm);
+    border-radius: var(--mantine-radius-md);
+
+    color: var(--mantine-color-placeholder);
+    border: var(--common-grey-border);
+    background-color: var(--mantine-color-white);
+}
+
+.search_bar_shortcut {
+    font-size: rem(11px);
+    line-height: 1;
+
+    padding: rem(4px) rem(7px);
+
+    border-radius: var(--mantine-radius-sm);
+    border: rem(1px) solid;
+
+    font-weight: bold;
+
+    color: var(--mantine-color-gray-7);
+    border-color: var(--mantine-color-gray-2);
+    background-color: var(--mantine-color-gray-0);
+}
+
+.user_menu {
+    height: var(--icon-size);
+
+    padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+    border-radius: var(--mantine-radius-sm);
+    transition: background-color 100ms ease;
+
+    border: var(--common-grey-border);
+
+    align-items: center;
+    display: flex;
+}
+
+.user_menu:hover {
+    background-color: var(--common-hover-background-color);
+    color: var(--common-hover-color);
+}
+
+.user_menu_active {
+    background-color: var(--common-hover-background-color);
+    color: var(--common-hover-color);
+}

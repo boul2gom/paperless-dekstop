@@ -1,0 +1,61 @@
+@import "./Common.module.css";
+
+.page_container {
+    composes: common-styles from "./Common.module.css";
+
+    height: var(--window-height);
+    width: var(--window-width);
+}
+
+.navigation_container {
+    composes: common-styles from "./Common.module.css";
+
+    height: var(--navigation-height);
+    width: var(--navigation-width);
+
+    position: fixed;
+
+    background-color: var(--common-background-color);
+    border-right: var(--common-border);
+
+    padding: var(--mantine-spacing-md);
+    padding-top: 0;
+
+    margin-top: 0;
+}
+
+.top_container {
+    composes: common-styles from "./Common.module.css";
+
+    height: var(--top-container-height);
+    width: var(--top-container-width);
+
+    position: fixed;
+    top: 0;
+    left: var(--navigation-width);
+
+    background-color: var(--common-background-color);
+    border-bottom: var(--common-border);
+
+    padding: var(--mantine-spacing-md);
+
+    margin-top: 0;
+    margin-left: var(--mantine-spacing-md);
+    margin-right: var(--mantine-spacing-md);
+}
+
+.content_container {
+    composes: common-styles from "./Common.module.css";
+
+    height: var(--content-container-height);
+    width: var(--content-container-width);
+
+    position: fixed;
+    top: var(--top-container-height);
+    left: var(--navigation-width);
+
+    background-color: var(--common-background-color);
+
+    padding: var(--mantine-spacing-md);
+    margin: 0;
+}
