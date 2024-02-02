@@ -25,7 +25,7 @@ version = "0.4.33"
 features = ["serde"]
 
 [dependencies.serde]
-version = "1.0.193"
+version = "1.0.196"
 features = ["derive"]
 
 [dependencies.tauri-plugin-store]
