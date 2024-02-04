@@ -1,22 +1,20 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-
+use paperless_desktop::__cmd__documents_query;
+use paperless_desktop::__cmd__fetch_latest_paperless_release;
+use paperless_desktop::__cmd__fetch_latest_release;
+use paperless_desktop::data::documents::documents_query;
+use paperless_desktop::data::system::fetch_latest_paperless_release;
+use paperless_desktop::data::system::fetch_latest_release;
+use paperless_desktop::store::Storage;
 use paperless_rs::authorization::AuthorizationType;
 use paperless_rs::authorization::CertificateType;
 use paperless_rs::authorization::Credentials;
 use paperless_rs::ternary;
 use paperless_rs::PaperlessClient;
+use tauri::http::ResponseBuilder;
 use tauri::{async_runtime, Manager};
 use tauri_plugin_store::StoreBuilder;
-
-use paperless_desktop::__cmd__documents_query;
-use paperless_desktop::__cmd__fetch_latest_paperless_release;
-use paperless_desktop::__cmd__fetch_latest_release;
-
-use paperless_desktop::data::documents::documents_query;
-use paperless_desktop::data::system::fetch_latest_paperless_release;
-use paperless_desktop::data::system::fetch_latest_release;
-use paperless_desktop::store::Storage;
 
 fn main() {
     // Template variables
@@ -33,6 +31,13 @@ fn main() {
         ])
         .manage(setup_http())
         .manage(setup_paperless())
+        .register_uri_scheme_protocol("paperless-desktop", |_, _| {
+            let response = ResponseBuilder::new().status(200);
+
+            let body = "You can now close this screen and go back to the app.".as_bytes();
+            let response = response.body(Vec::from(body)).unwrap();
+            Ok(response)
+        })
         .setup(|app| {
             let store = StoreBuilder::new(app.handle(), "preferences.bin".parse()?).build();
             let storage = Storage::new(store);

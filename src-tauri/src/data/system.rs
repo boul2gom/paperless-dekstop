@@ -1,7 +1,8 @@
-use crate::store::Storage;
-use crate::utils;
 use serde_json::Value;
 use tauri::State;
+
+use crate::store::Storage;
+use crate::utils;
 
 #[tauri::command(async)]
 pub async fn fetch_latest_release(

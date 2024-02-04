@@ -1,7 +1,8 @@
+use std::sync::Mutex;
+
 use chrono::Utc;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
-use std::sync::Mutex;
 use tauri::Wry;
 use tauri_plugin_store::Store;
 
