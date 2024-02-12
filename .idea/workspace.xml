@@ -8,19 +8,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90e748f3-a303-4b56-96cb-0d66566f3ab6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/paperless-desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/paperless-desktop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-tauri/Cargo.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src-tauri/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/src/data/system.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/data/system.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-tauri/src/data/documents.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-tauri/src/data/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/data/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src-tauri/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src-tauri/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/main.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src-tauri/src/store/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/store/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-tauri/src/utils/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/utils/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/HeaderBar/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/HeaderBar/SearchBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Utils/Utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Utils/Utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,27 +51,33 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2bsErXtczE3ZKmzkg3YxudRsoQe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Cargo.Build `Test paperless-desktop`.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yggdr/Desktop/paperless-rs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\yggdr\\Desktop\\paperless-desktop\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -116,21 +134,22 @@
       <option name="presentableId" value="Default" />
       <updated>1706995593951</updated>
       <workItem from="1706995599606" duration="1706000" />
-      <workItem from="1707044594246" duration="2547000" />
+      <workItem from="1707044594246" duration="8128000" />
+      <workItem from="1707405511158" duration="9000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="WfRunsListSearchHistory"><![CDATA[{
-  "history": [
+  <component name="WfRunsListSearchHistory">{
+  &quot;history&quot;: [
     {
     },
     {
     }
   ],
-  "lastFilter": {
+  &quot;lastFilter&quot;: {
   }
-}]]></component>
+}</component>
 </project>

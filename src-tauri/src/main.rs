@@ -1,12 +1,26 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+use std::sync::Arc;
+use std::time::Duration;
+
+use clokwerk::Interval;
+use clokwerk::Scheduler;
+use moka::sync::CacheBuilder;
 use paperless_desktop::__cmd__documents_query;
 use paperless_desktop::__cmd__fetch_latest_paperless_release;
 use paperless_desktop::__cmd__fetch_latest_release;
-use paperless_desktop::data::documents::documents_query;
+use paperless_desktop::__cmd__get_favourites;
+use paperless_desktop::__cmd__add_to_favourites;
+use paperless_desktop::__cmd__remove_from_favourites;
+use paperless_desktop::documents::favourites::Favourites;
+use paperless_desktop::documents::search::documents_query;
 use paperless_desktop::data::system::fetch_latest_paperless_release;
 use paperless_desktop::data::system::fetch_latest_release;
-use paperless_desktop::store::Storage;
+use paperless_desktop::documents::favourites::get_favourites;
+use paperless_desktop::documents::favourites::add_to_favourites;
+use paperless_desktop::documents::favourites::remove_from_favourites;
+use paperless_desktop::store::local::Storage;
+use paperless_desktop::store::MemoryCache;
 use paperless_rs::authorization::AuthorizationType;
 use paperless_rs::authorization::CertificateType;
 use paperless_rs::authorization::Credentials;
@@ -18,18 +32,21 @@ use tauri_plugin_store::StoreBuilder;
 
 fn main() {
     // Template variables
-    std::env::set_var("PAPERLESS_USERNAME", "admin");
-    std::env::set_var("PAPERLESS_PASSWORD", "admin");
-    std::env::set_var("PAPERLESS_URL", "https://paperless.example.com");
+    std::env::set_var("PAPERLESS_USERNAME", "boul2gom");
+    std::env::set_var("PAPERLESS_PASSWORD", "GvcDacuTC@eor5#M");
+    std::env::set_var("PAPERLESS_URL", "http://127.0.0.1:8000");
 
     tauri::Builder::default()
         .plugin(tauri_plugin_store::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
             documents_query,
             fetch_latest_release,
-            fetch_latest_paperless_release
+            fetch_latest_paperless_release,
+
+            get_favourites,
+            add_to_favourites,
+            remove_from_favourites
         ])
-        .manage(setup_http())
         .manage(setup_paperless())
         .register_uri_scheme_protocol("paperless-desktop", |_, _| {
             let response = ResponseBuilder::new().status(200);
@@ -39,9 +56,32 @@ fn main() {
             Ok(response)
         })
         .setup(|app| {
+            let mut scheduler = Scheduler::with_tz(chrono::Utc);
+            let cache: MemoryCache = CacheBuilder::new(100_000).build();
+            let cache = Arc::new(cache);
+
+            let builder = reqwest::Client::builder();
+            let builder = builder.user_agent("paperless-rs");
+            let client = builder.build().expect("Could not create HTTP client");
+            app.manage(client);
+
             let store = StoreBuilder::new(app.handle(), "preferences.bin".parse()?).build();
-            let storage = Storage::new(store);
-            app.manage(storage);
+            let storage = Arc::new(Storage::new(store));
+
+            Favourites::load(&cache, &storage);
+
+            app.manage(cache.clone());
+            app.manage(storage.clone());
+
+            scheduler.every(Interval::Minutes(1)).run(move || {
+                println!("Saving favourites and store on disk...");
+                Favourites::save(&cache, &storage).expect("Could not save favourites");
+                storage.save_store().expect("Could not save store");
+                println!("Stores has been saved!");
+            });
+
+            let scheduler_handle = scheduler.watch_thread(Duration::from_secs(30));
+            app.manage(scheduler_handle);
 
             Ok(())
         })
@@ -56,18 +96,6 @@ pub fn get_env(name: &str) -> Option<String> {
     }
 }
 
-pub fn setup_http() -> reqwest::Client {
-    let builder = reqwest::Client::builder();
-    let builder = builder.user_agent("paperless-rs");
-    let client = builder.build();
-
-    if client.is_err() {
-        panic!("Could not create HTTP client! Please check running environment.");
-    }
-
-    client.unwrap()
-}
-
 pub fn setup_paperless() -> PaperlessClient {
     async_runtime::block_on(async {
         let cred_username = self::get_env("PAPERLESS_USERNAME");
@@ -79,8 +107,7 @@ pub fn setup_paperless() -> PaperlessClient {
         } else if cred_username.is_some() && cred_password.is_some() {
             AuthorizationType::Basic(Credentials::new(
                 cred_username.unwrap(),
-                cred_password.unwrap(),
-                None,
+                cred_password.unwrap()
             ))
         } else {
             panic!("No credentials or token provided! Please check running environment.");

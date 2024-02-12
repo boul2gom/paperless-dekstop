@@ -19,9 +19,9 @@ export function SearchBar() {
 
         // Maybe group results by type (document, tag, etc.) will be better. Check doc fo this.
         invoke_backend("Header", "documents_query", {query: search_query}, results => {
-            const formatted_results: SpotlightActionData[] = results.map((result: string, index: number) => ({
+            const formatted_results: SpotlightActionData[] = results.map((result: any, index: number) => ({
                 id: index,
-                label: result,
+                label: index.toString(),
                 description: 'Document: ' + result,
                 leftSection: <IconFileText style={{ width: rem(24), height: rem(24) }} stroke={1.5} />,
             }));
