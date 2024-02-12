@@ -4,6 +4,7 @@ import classes from '@/src/styles/Content.module.css';
 import { fetch_backend, invoke_backend } from './Utils/Utils';
 import Error from 'next/error';
 import useSWR from 'swr';
+import { useState } from 'react';
 
 interface CardProperties {
   id: number;
@@ -36,21 +37,21 @@ function Card({ image, title, category }: CardProperties) {
   );
 }
 
-export function CarouselSkeleton() {
+interface CarouselSkeletonProps {
+  from: string;
+}
+
+export const CarouselSkeleton: React.FC<CarouselSkeletonProps> = ({ from }) => {
   return (
-    <>
-      <div>
-        Loading...
-      </div>
-    </>
+    <div>
+      Loading {from}...
+    </div>
   );
-} 
+}
 
 export function Carousel() {
-  const { data, error } = useSWR('favourites', () => fetch_backend<number[]>('Carousel', 'get_favourites'));
-
-  if (error) return <Error statusCode={500} title='Internal Server Error' />;
-  if (!data) { console.log('No data were found...'); return <CarouselSkeleton />; }
+  const { data } = useSWR('favourites', () => fetch_backend<number[]>('Carousel', 'get_favourites'), { suspense: true, fallbackDat: [] });
+  console.log('Data fetched from backend:', data);
 
   return (
     <>
@@ -59,8 +60,6 @@ export function Carousel() {
           <Card id={id} key={id} image="https://images.unsplash.com/photo-1706554596177-35b0a05a082e" title={`Document ${id}`} category="Category" />
         ))}
       </MantineCarousel>
-
-      <Button onClick={() => invoke_backend("Carousel", "add_to_favourites", { id: 1 })}>Add to favourites</Button>
     </>
   );
 }

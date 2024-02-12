@@ -10,13 +10,15 @@ use super::Error;
 pub struct Storage(Mutex<Store<Wry>>);
 
 impl Storage {
-    pub fn new(store: Store<Wry>) -> Self {
-        Self(Mutex::new(store))
+    pub fn new(mut store: Store<Wry>) -> Result<Self, Error> {
+        store.load().map_err(|e| Error::IO(e.to_string()))?;
+
+        Ok(Self(Mutex::new(store)))
     }
 
     pub fn fetch<T>(&self, key: &str) -> Result<T, Error>
     where
-        T: Serialize + DeserializeOwned,
+        T: Serialize + DeserializeOwned + std::fmt::Debug,
     {
         self.on_store(|store| {
             let value = store.get(key);

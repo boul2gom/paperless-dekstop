@@ -6,7 +6,7 @@ import { HeaderBar } from '@/src/components/Layout/HeaderBar/HeaderBar';
 import classes from '@/src/styles/Main.module.css';
 import { Logo } from "@/src/components/Layout/Navigation/Logo";
 import { ScrollArea } from "@mantine/core";
-import { Carousel, CarouselHandler, CarouselSkeleton } from '../components/Carousel';
+import { Carousel, CarouselSkeleton } from '../components/Carousel';
 import { Suspense } from 'react';
 
 export default function Page() {
@@ -23,7 +23,7 @@ export default function Page() {
         </div>
 
         <div className={classes.content_container}>
-          <Suspense fallback={<CarouselSkeleton />}>
+          <Suspense fallback={<CarouselSkeleton from="Main page" />}>
             <Carousel />
           </Suspense>
         </div>  

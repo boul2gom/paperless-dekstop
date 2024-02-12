@@ -27,19 +27,17 @@ impl Favourites {
     }
 }
 
-#[tauri::command(async)]
-pub async fn add_to_favourites(cache: State<'_, Arc<MemoryCache>>, id: u64) -> Result<(), String> {
-    let mut data = self::get_favourites(cache.clone()).await?;
+#[tauri::command]
+pub fn add_to_favourites(cache: State<Arc<MemoryCache>>, id: u64) -> () {
+    let mut data = self::get_favourites(cache.clone());
     
-    ternary!(data.contains(&id), return Ok(()), data.push(id));
+    ternary!(data.contains(&id), return, data.push(id));
     cache.insert(String::from("favourites"), Cached::Ids(data));
-
-    Ok(())
 }
 
-#[tauri::command(async)]
-pub async fn remove_from_favourites(cache: State<'_, Arc<MemoryCache>>, id: u64) -> Result<(), String> {
-    let mut data = self::get_favourites(cache.clone()).await?;
+#[tauri::command]
+pub fn remove_from_favourites(cache: State<Arc<MemoryCache>>, id: u64) -> Result<(), String> {
+    let mut data = self::get_favourites(cache.clone());
     let index = data.iter().position(|&x| x == id).ok_or("Id not found")?;
     
     data.remove(index);
@@ -48,10 +46,10 @@ pub async fn remove_from_favourites(cache: State<'_, Arc<MemoryCache>>, id: u64)
     Ok(())
 }
 
-#[tauri::command(async)]
-pub async fn get_favourites(cache: State<'_, Arc<MemoryCache>>) -> Result<Vec<u64>, String> {
+#[tauri::command]
+pub fn get_favourites(cache: State<Arc<MemoryCache>>) -> Vec<u64> {
     match cache.get("favourites") {
-        Some(Cached::Ids(ids)) => Ok(ids),
-        _ => Ok(Vec::new()),
+        Some(Cached::Ids(ids)) => ids,
+        _ => Vec::new(),
     }
 }

@@ -45,7 +45,9 @@ fn main() {
 
             get_favourites,
             add_to_favourites,
-            remove_from_favourites
+            remove_from_favourites,
+
+            get_favourites_async,
         ])
         .manage(setup_paperless())
         .register_uri_scheme_protocol("paperless-desktop", |_, _| {
@@ -66,7 +68,7 @@ fn main() {
             app.manage(client);
 
             let store = StoreBuilder::new(app.handle(), "preferences.bin".parse()?).build();
-            let storage = Arc::new(Storage::new(store));
+            let storage = Arc::new(Storage::new(store).expect("Could not create storage"));
 
             Favourites::load(&cache, &storage);
 
@@ -87,6 +89,16 @@ fn main() {
         })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
+}
+
+#[tauri::command(async)]
+async fn get_favourites_async(cache: tauri::State<'_, Arc<MemoryCache> >) -> Result<Vec<u64>, String> {
+    let result = cache.get("favourites");
+        
+    match result {
+        Some(paperless_desktop::store::Cached::Ids(ids)) => Ok(ids),
+        _ => Ok(Vec::new()),
+    }
 }
 
 pub fn get_env(name: &str) -> Option<String> {
