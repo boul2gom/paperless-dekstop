@@ -1790,7 +1790,7 @@ dependencies = [
  "httpdate",
  "itoa 1.0.10",
  "pin-project-lite",
- "socket2 0.5.5",
+ "socket2 0.4.10",
  "tokio",
  "tower-service",
  "tracing",
@@ -2713,7 +2713,7 @@ dependencies = [
 [[package]]
 name = "paperless-rs"
 version = "0.1.5"
-source = "git+https://github.com/boul2gom/paperless-rs?branch=develop#331818aa647cb1141e5f0016a9488e7b32a3061a"
+source = "git+https://github.com/boul2gom/paperless-rs?branch=develop#28a65577d8c510e5dd437a6c32683c7ae0e481d1"
 dependencies = [
  "async-trait",
  "base64 0.21.7",
@@ -3599,18 +3599,18 @@ dependencies = [
 
 [[package]]
 name = "serde"
-version = "1.0.196"
+version = "1.0.197"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "870026e60fa08c69f064aa766c10f10b1d62db9ccd4d0abb206472bee0ce3b32"
+checksum = "3fb1c873e1b9b056a4dc4c0c198b24c3ffa059243875552b2bd0933b1aee4ce2"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.196"
+version = "1.0.197"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "33c85360c95e7d137454dc81d9a4ed2b8efd8fbe19cee57357b32b9771fccb67"
+checksum = "7eb0b34b42edc17f6b7cac84a52a1c5f0e1bb2227e997ca9011ea3dd34e8610b"
 dependencies = [
  "proc-macro2",
  "quote",
