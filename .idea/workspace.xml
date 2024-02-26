@@ -8,18 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90e748f3-a303-4b56-96cb-0d66566f3ab6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/Cargo.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src-tauri/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/src/data/documents.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/src/data/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/data/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src-tauri/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/src/store/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/store/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src-tauri/src/utils/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src-tauri/src/utils/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/HeaderBar/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/HeaderBar/SearchBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/HeaderBar/HeaderBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/HeaderBar/HeaderBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/HeaderBar/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/HeaderBar/UserMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Navigation/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Navigation/Logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Utils/InvokeWrapper.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Utils/Utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Utils/Utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,6 +81,7 @@
       <map>
         <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
         <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
       </map>
     </option>
   </component>
@@ -136,20 +135,23 @@
       <workItem from="1706995599606" duration="1706000" />
       <workItem from="1707044594246" duration="8128000" />
       <workItem from="1707405511158" duration="9000" />
+      <workItem from="1708605157428" duration="42000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="WfRunsListSearchHistory">{
-  &quot;history&quot;: [
+  <component name="WfRunsListSearchHistory"><![CDATA[{
+  "history": [
+    {
+    },
     {
     },
     {
     }
   ],
-  &quot;lastFilter&quot;: {
+  "lastFilter": {
   }
-}</component>
+}]]></component>
 </project>

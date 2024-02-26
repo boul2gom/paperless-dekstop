@@ -7,11 +7,10 @@ import { IconChevronDown, IconFileTypePdf, IconFolderSearch, IconHeart, IconLogo
 
 interface UserProperties {
     name: string;
-    email: string;
     image: string;
 }
 
-export function UserMenu({ name, email, image }: UserProperties) {
+export function UserMenu({ name, image }: UserProperties) {
     const theme = useMantineTheme();
     const [user_opened, set_user_opened] = useState(false);
 

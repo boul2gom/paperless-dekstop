@@ -1,14 +1,11 @@
 import { rem, Flex, ActionIcon, Tooltip } from '@mantine/core';
 import { IconBell, IconGitBranch } from '@tabler/icons-react';
 
-import classes from '@/src/styles/Layout.module.css';
-
 import { UserMenu } from "@/src/components/Layout/HeaderBar/UserMenu";
 import { SearchBar } from "@/src/components/Layout/HeaderBar/SearchBar";
 
 const user = {
     name: 'Template User',
-    email: 'contact@boul2gom.fr',
     image: 'https://avatars.githubusercontent.com/u/56512795?v=4',
 };
 
@@ -33,7 +30,7 @@ export function HeaderBar() {
                         </Tooltip>
                     </Tooltip.Group>
 
-                    <UserMenu name={user.name} email={user.email} image={user.image} />
+                    <UserMenu name={user.name} image={user.image} />
                 </Flex>
             </Flex>
         </>

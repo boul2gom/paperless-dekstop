@@ -1,21 +1,27 @@
 import classes from "@/src/styles/Layout.module.css";
 import Image from "next/image";
 import {Code, Group} from "@mantine/core";
-import {useState} from "react";
-import {dynamic_invoke} from "@/src/components/Utils/Utils";
+import { Suspense } from "react";
+import { fetch_backend } from "../../Utils/Utils";
+import useSWR from "swr";
 
-export function Logo() {
-    const [latest_release, set_latest_release] = useState("0.0.0");
-    const TauriWrapComponent = dynamic_invoke<string>();
+const LogoSkeleton = () => {
+    return (
+        <Code fw={700} className={classes.release_block}>...</Code>
+    );
+}
+
+export default function Logo() {
+    const { data } = useSWR("latest_release", () => fetch_backend<string>("Logo", "fetch_latest_paperless_release"));
 
     return (
         <>
             <Group justify="space-between" className={classes.logo}>
                 <Image src={"paperless-ngx.png"} alt={"Paperless Logo"} width={159} height={60}/>
-                <Code fw={700} className={classes.release_block}>{latest_release}</Code>
+                <Suspense fallback={<LogoSkeleton />}>
+                    <Code fw={700} className={classes.release_block}>{data}</Code>
+                </Suspense>
             </Group>
-            
-            <TauriWrapComponent caller="Navigation" command="fetch_latest_paperless_release" set_state={set_latest_release} />
         </>
     )
 }

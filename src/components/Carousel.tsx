@@ -1,10 +1,9 @@
 import { Carousel as MantineCarousel } from '@mantine/carousel';
 import { Paper, Text, Title, Button } from '@mantine/core';
 import classes from '@/src/styles/Content.module.css';
-import { fetch_backend, invoke_backend } from './Utils/Utils';
-import Error from 'next/error';
+import { fetch_backend } from './Utils/Utils';
 import useSWR from 'swr';
-import { useState } from 'react';
+import { Suspense } from 'react';
 
 interface CardProperties {
   id: number;
@@ -37,28 +36,29 @@ function Card({ image, title, category }: CardProperties) {
   );
 }
 
-interface CarouselSkeletonProps {
-  from: string;
-}
-
-export const CarouselSkeleton: React.FC<CarouselSkeletonProps> = ({ from }) => {
+export const CarouselSkeleton = () => {
   return (
     <div>
-      Loading {from}...
+      Loading skeleton...
     </div>
   );
 }
 
-export function Carousel() {
-  const { data } = useSWR('favourites', () => fetch_backend<number[]>('Carousel', 'get_favourites'), { suspense: true, fallbackDat: [] });
-  console.log('Data fetched from backend:', data);
+export default function Carousel() {
+  const { data } = useSWR("favourites", () => fetch_backend<number[]>("Carousel", "get_favourites"));
+
+  if (!data) {
+    return <CarouselSkeleton />;
+  }
 
   return (
     <>
       <MantineCarousel slideSize="30%" slideGap="md" loop withIndicators>
-        {data.map((id) => (
-          <Card id={id} key={id} image="https://images.unsplash.com/photo-1706554596177-35b0a05a082e" title={`Document ${id}`} category="Category" />
-        ))}
+        <Suspense fallback={<CarouselSkeleton />}>
+          {data.map((id) => (
+            <Card id={id} key={id} image="https://images.unsplash.com/photo-1706554596177-35b0a05a082e" title={`Document ${id}`} category="Category" />
+          ))}
+        </Suspense>
       </MantineCarousel>
     </>
   );

@@ -36,8 +36,15 @@ fn main() {
     std::env::set_var("PAPERLESS_PASSWORD", "GvcDacuTC@eor5#M");
     std::env::set_var("PAPERLESS_URL", "http://127.0.0.1:8000");
 
-    tauri::Builder::default()
-        .plugin(tauri_plugin_store::Builder::default().build())
+    #[cfg(debug_assertions)] // only enable instrumentation in development builds
+    let devtools = devtools::init();
+
+    let builder = tauri::Builder::default();
+
+    #[cfg(debug_assertions)] // only enable instrumentation in development builds
+    let builder = builder.plugin(devtools);
+    
+    builder.plugin(tauri_plugin_store::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
             documents_query,
             fetch_latest_release,
