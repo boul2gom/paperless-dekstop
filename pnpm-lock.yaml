@@ -10,7 +10,7 @@ dependencies:
     version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(embla-carousel-react@8.0.0-rc23)(react-dom@18.2.0)(react@18.2.0)
   '@mantine/charts':
     specifier: ^7.5.0
-    version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)(recharts@2.12.1)
+    version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)(recharts@2.12.2)
   '@mantine/code-highlight':
     specifier: ^7.5.0
     version: 7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)
@@ -73,7 +73,7 @@ dependencies:
     version: 18.2.0(react@18.2.0)
   recharts:
     specifier: '2'
-    version: 2.12.1(react-dom@18.2.0)(react@18.2.0)
+    version: 2.12.2(react-dom@18.2.0)(react@18.2.0)
   swr:
     specifier: ^2.2.5
     version: 2.2.5(react@18.2.0)
@@ -287,7 +287,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@mantine/charts@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)(recharts@2.12.1):
+  /@mantine/charts@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0)(recharts@2.12.2):
     resolution: {integrity: sha512-2L8d+pTYPTCKhEjcDuYlnTFfwtGZrMAQn4oYnAKrvs93Xf0DPgoZ2gabOvh1BkbMiAyPp3DET+jlbYTgjcpPmQ==}
     peerDependencies:
       '@mantine/core': 7.5.0
@@ -300,7 +300,7 @@ packages:
       '@mantine/hooks': 7.5.0(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      recharts: 2.12.1(react-dom@18.2.0)(react@18.2.0)
+      recharts: 2.12.2(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /@mantine/code-highlight@7.5.0(@mantine/core@7.5.0)(@mantine/hooks@7.5.0)(react-dom@18.2.0)(react@18.2.0):
@@ -3076,8 +3076,8 @@ packages:
       decimal.js-light: 2.5.1
     dev: false
 
-  /recharts@2.12.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-35vUCEBPf+pM+iVgSgVTn86faKya5pc4JO6cYJL63qOK2zDEyzDn20Tdj+CDI/3z+VcpKyQ8ZBQ9OiQ+vuAbjg==}
+  /recharts@2.12.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9bpxjXSF5g81YsKkTSlaX7mM4b6oYI1mIYck6YkUcWuL3tomADccI51/6thY4LmvhYuRTwpfrOvE80Zc3oBRfQ==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
