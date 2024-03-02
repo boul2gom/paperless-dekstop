@@ -1,8 +1,10 @@
+use std::path::PathBuf;
 use std::sync::Mutex;
+use paperless_rs::ternary;
 
 use serde::de::DeserializeOwned;
 use serde::Serialize;
-use tauri::Wry;
+use tauri::{AppHandle, Wry};
 use tauri_plugin_store::Store;
 
 use super::Error;
@@ -10,8 +12,13 @@ use super::Error;
 pub struct Storage(Mutex<Store<Wry>>);
 
 impl Storage {
-    pub fn new(mut store: Store<Wry>) -> Result<Self, Error> {
-        store.load().map_err(|e| Error::IO(e.to_string()))?;
+    pub fn new(handle: AppHandle, path: PathBuf, mut store: Store<Wry>) -> Result<Self, Error> {
+        let app_dir = handle.path_resolver().app_data_dir().ok_or_else(|| Error::IO("Failed to resolve app data dir".into()))?;
+        let store_path = app_dir.join(path);
+
+        ternary!(store_path.exists(), {
+            store.load().map_err(|e| Error::IO(e.to_string()))?;
+        }, ());
 
         Ok(Self(Mutex::new(store)))
     }

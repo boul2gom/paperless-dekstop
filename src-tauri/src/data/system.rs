@@ -4,7 +4,7 @@ use tauri::State;
 use crate::{store::{Cached, MemoryCache}, utils};
 
 #[tauri::command(async)]
-pub async fn fetch_latest_release(
+pub async fn latest_release(
     client: State<'_, reqwest::Client>,
     cache: State<'_, Arc<MemoryCache>>,
 ) -> Result<String, String> {
@@ -25,7 +25,7 @@ pub async fn fetch_latest_release(
 }
 
 #[tauri::command(async)]
-pub async fn fetch_latest_paperless_release(
+pub async fn latest_paperless_release(
     client: State<'_, reqwest::Client>,
     cache: State<'_, Arc<MemoryCache>>,
 ) -> Result<String, String> {
