@@ -1,8 +1,8 @@
 import { rem, Flex, ActionIcon, Tooltip } from '@mantine/core';
 import { IconBell, IconGitBranch } from '@tabler/icons-react';
 
-import { UserMenu } from "@/src/components/Layout/HeaderBar/UserMenu";
-import { SearchBar } from "@/src/components/Layout/HeaderBar/SearchBar";
+import { UserMenu } from "@/components/Layout/HeaderBar/UserMenu";
+import { SearchBar } from "@/components/Layout/HeaderBar/SearchBar";
 
 const user = {
     name: 'Template User',

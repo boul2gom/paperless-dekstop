@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { NavigationCategory, toggle_category } from "@/src/components/Layout/Navigation/NavigationCategory";
+import { NavigationCategory, toggle_category } from "@/components/Layout/Navigation/NavigationCategory";
 
-import classes from "@/src/styles/Layout.module.css";
+import classes from "@/styles/Layout.module.css";
 import { IconGauge, IconFolderSearch, IconFileDescription, IconFolderCog, IconAdjustments } from "@tabler/icons-react";
 
 const main_categories = [

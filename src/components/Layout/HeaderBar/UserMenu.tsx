@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Avatar, Group, Menu, rem, Text, UnstyledButton, useMantineTheme } from "@mantine/core";
 
 import cx from "clsx";
-import classes from "@/src/styles/Layout.module.css";
+import classes from "@/styles/Layout.module.css";
 import { IconChevronDown, IconFileTypePdf, IconFolderSearch, IconHeart, IconLogout, IconPhoto, IconSettings, IconSwitchHorizontal } from "@tabler/icons-react";
 
 interface UserProperties {

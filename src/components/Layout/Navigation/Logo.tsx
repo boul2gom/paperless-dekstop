@@ -1,9 +1,10 @@
-import classes from "@/src/styles/Layout.module.css";
-import Image from "next/image";
-import {Code, Group, Skeleton} from "@mantine/core";
+import classes from "@/styles/Layout.module.css";
+import {Code, Group, Skeleton, Image } from "@mantine/core";
 import { Suspense } from "react";
 import { useSuspenseQuery } from '@tanstack/react-query'
-import {fetcher} from "@/src/components/Utils/Utils";
+import { fetcher } from "@/components/Utils/Utils";
+
+import logo from "@/assets/paperless-ngx.png";
 
 const ReleaseSkeleton = () => {
     return (
@@ -25,7 +26,7 @@ const ReleaseBlock = () => {
 export default function Logo() {
     return (
         <Group justify="space-between" className={classes.logo}>
-            <Image src={"paperless-ngx.png"} alt={"Paperless Logo"} width={159} height={60}/>
+            <Image src={logo} alt="Paperless Logo" width={159} height={60} />
             <Suspense fallback={<ReleaseSkeleton />}>
                 <ReleaseBlock />
             </Suspense>

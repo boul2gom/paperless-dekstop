@@ -1,9 +1,9 @@
 import { FC, Dispatch, SetStateAction } from "react";
 import { Box, Collapse, Group, Text, ThemeIcon, UnstyledButton, rem } from "@mantine/core";
 
-import { prevent_default } from "@/src/components/Utils/Utils";
+import { prevent_default } from "@/components/Utils/Utils";
 
-import classes from "@/src/styles/Layout.module.css";
+import classes from "@/styles/Layout.module.css";
 import { IconChevronRight } from "@tabler/icons-react";
 
 interface CategoryProperties {

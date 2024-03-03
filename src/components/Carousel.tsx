@@ -1,6 +1,6 @@
 import { Carousel as MantineCarousel } from '@mantine/carousel';
 import { Paper, Text, Title, Button } from '@mantine/core';
-import classes from '@/src/styles/Content.module.css';
+import classes from '@/styles/Content.module.css';
 import { Suspense } from 'react';
 
 interface CardProperties {
