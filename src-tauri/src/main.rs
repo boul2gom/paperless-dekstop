@@ -12,6 +12,7 @@ use paperless_desktop::__cmd__latest_release;
 use paperless_desktop::__cmd__get_favourites;
 use paperless_desktop::__cmd__add_to_favourites;
 use paperless_desktop::__cmd__remove_from_favourites;
+use paperless_desktop::__cmd__document_thumbnail;
 use paperless_desktop::documents::favourites::Favourites;
 use paperless_desktop::documents::search::documents_query;
 use paperless_desktop::data::system::latest_paperless_release;
@@ -19,6 +20,7 @@ use paperless_desktop::data::system::latest_release;
 use paperless_desktop::documents::favourites::get_favourites;
 use paperless_desktop::documents::favourites::add_to_favourites;
 use paperless_desktop::documents::favourites::remove_from_favourites;
+use paperless_desktop::documents::document_thumbnail;
 use paperless_desktop::store::local::Storage;
 use paperless_desktop::store::MemoryCache;
 use paperless_rs::authorization::AuthorizationType;
@@ -54,8 +56,10 @@ fn main() {
             get_favourites,
             add_to_favourites,
             remove_from_favourites,
+
+            document_thumbnail
         ])
-        .manage(setup_paperless())
+        .manage(setup_paperless().expect("Could not setup Paperless"))
         .register_uri_scheme_protocol("paperless-desktop", |_, _| {
             let response = ResponseBuilder::new().status(200);
 
@@ -105,7 +109,7 @@ pub fn get_env(name: &str) -> Option<String> {
     }
 }
 
-pub fn setup_paperless() -> PaperlessClient {
+pub fn setup_paperless() -> Result<PaperlessClient, Box<dyn std::error::Error>> {
     async_runtime::block_on(async {
         let cred_username = self::get_env("PAPERLESS_USERNAME");
         let cred_password = self::get_env("PAPERLESS_PASSWORD");
@@ -150,6 +154,7 @@ pub fn setup_paperless() -> PaperlessClient {
             panic!("Could not connect to Paperless! Please check running environment.");
         }
 
-        paperless_client.unwrap()
+        // Ping http://127.0.0.1:8000/api/remote_version/ to check if Paperless is running
+        paperless_client
     })
 }

@@ -1,7 +1,7 @@
-import { FC, Dispatch, SetStateAction } from "react";
+import React, { FC, Dispatch, SetStateAction } from "react";
 import { Box, Collapse, Group, Text, ThemeIcon, UnstyledButton, rem } from "@mantine/core";
 
-import { prevent_default } from "@/components/Utils/Utils";
+import { prevent_default } from "@/utils/utils.ts";
 
 import classes from "@/styles/Layout.module.css";
 import { IconChevronRight } from "@tabler/icons-react";
@@ -20,8 +20,7 @@ export const toggle_category = (categories: boolean[], set_categories: Dispatch<
 
     set_categories(updated_categories);
 };
-
-export function Button({ label, link }: { label: string; link: string }) {
+const Button = ({ label, link }: { label: string; link: string }) => {
     return (
         <Text<'a'> className={classes.category_link} component="a" key={label} href={link} onClick={prevent_default}>
             {label}
@@ -29,7 +28,7 @@ export function Button({ label, link }: { label: string; link: string }) {
     );
 }
 
-export function NavigationCategory({ icon: Icon, label, is_open, on_toggle, links }: CategoryProperties) {
+export const NavigationCategory: React.FC<CategoryProperties> = ({ icon: Icon, label, is_open, on_toggle, links }) => {
     const items = (Array.isArray(links) ? links : []).map((link, index) => (
         <Button key={index} label={link.label} link={link.link} />
     ));

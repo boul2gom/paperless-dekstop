@@ -5,7 +5,7 @@ import classes from "@/styles/Layout.module.css";
 import { IconGauge, IconFolderSearch, IconFileDescription, IconFolderCog, IconAdjustments } from "@tabler/icons-react";
 import { Code, Group, Skeleton, Image } from "@mantine/core";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { fetcher } from "@/components/Utils/Utils";
+import { fetcher } from "@/utils/backend.ts";
 
 import logo from "@/assets/paperless-ngx.png";
 
@@ -64,15 +64,12 @@ export function Navigation() {
 
   const categories = main_categories.map((item) => (
           <NavigationCategory is_open={false} on_toggle={() => {}} key={item.label} {...item} />
-      )).concat(
-          linked_categories.map((item, index) => (
-            <NavigationCategory
-              {...item}
-              key={item.label}
-              is_open={categories_opened[index]}
-              on_toggle={() => toggle_category(categories_opened, set_categories_opened, index)}
-            />
-          ))
+  )).concat(
+      linked_categories.map((item, index) => (
+        <NavigationCategory {...item} key={item.label} is_open={categories_opened[index]}
+          on_toggle={() => toggle_category(categories_opened, set_categories_opened, index)}
+        />
+      ))
   );
 
   return (

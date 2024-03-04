@@ -1,12 +1,12 @@
 import {useDebouncedState} from "@mantine/hooks";
 import {ChangeEvent, useEffect, useState} from "react";
 import {Spotlight, spotlight, SpotlightActionData} from "@mantine/spotlight";
-import {invoke_backend} from "@/components/Utils/Utils";
+import {invoke_backend} from "@/utils/backend.ts";
 import {IconFileText, IconSearch} from "@tabler/icons-react";
 import {Group, rem, Text, UnstyledButton} from "@mantine/core";
 import classes from "@/styles/Layout.module.css";
 
-export function SearchBar() {
+export const SearchBar = () => {
     const [search_query, set_search_query] = useDebouncedState('', 300)
     const [search_results, set_search_results] = useState<SpotlightActionData[]>([]);
 

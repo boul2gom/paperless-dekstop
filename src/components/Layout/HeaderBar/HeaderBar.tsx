@@ -9,30 +9,29 @@ const user = {
     image: 'https://avatars.githubusercontent.com/u/56512795?v=4',
 };
 
-export function HeaderBar() {
+export const Header = () => {
     return (
-        <>
-            <Flex justify="center" align="center" gap="xl" style={{ height: '100%' }}>
-                <SearchBar />
+        <Flex justify="center" align="center" gap="xl" style={{height: '100%'}}>
+            <SearchBar/>
 
-                <Flex justify="flex-end" align="center" gap="xs" style={{ width: "500px" }}>
-                    <Tooltip.Group openDelay={500} closeDelay={100}>
-                        <Tooltip label="Notifications" position="bottom">
-                            <ActionIcon variant="default" size="lg" color="gray" mr={3}>
-                                <IconBell style={{ width: rem(24), height: rem(24) }} stroke={1.5} />
-                            </ActionIcon>
-                        </Tooltip>
+            <Flex justify="flex-end" align="center" gap="xs" style={{width: "500px"}}>
+                <Tooltip.Group openDelay={500} closeDelay={100}>
+                    <Tooltip label="Notifications" position="bottom">
+                        <ActionIcon variant="default" size="lg" color="gray" mr={3}>
+                            <IconBell style={{width: rem(24), height: rem(24)}} stroke={1.5}/>
+                        </ActionIcon>
+                    </Tooltip>
 
-                        <Tooltip label="Source code" position="bottom">
-                            <ActionIcon variant="default" size="lg" color="gray" mr={3} component="a" href="https://github.com/boul2gom/paperless-rs">
-                                <IconGitBranch style={{ width: rem(24), height: rem(24) }} stroke={1.5} />
-                            </ActionIcon>
-                        </Tooltip>
-                    </Tooltip.Group>
+                    <Tooltip label="Source code" position="bottom">
+                        <ActionIcon variant="default" size="lg" color="gray" mr={3} component="a"
+                                    href="https://github.com/boul2gom/paperless-rs">
+                            <IconGitBranch style={{width: rem(24), height: rem(24)}} stroke={1.5}/>
+                        </ActionIcon>
+                    </Tooltip>
+                </Tooltip.Group>
 
-                    <UserMenu name={user.name} image={user.image} />
-                </Flex>
+                <UserMenu name={user.name} image={user.image}/>
             </Flex>
-        </>
+        </Flex>
     );
 }

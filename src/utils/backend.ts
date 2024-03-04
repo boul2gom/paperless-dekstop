@@ -1,7 +1,4 @@
-import { MouseEvent } from "react";
 import {invoke, InvokeArgs} from "@tauri-apps/api/tauri";
-
-export const prevent_default = (event: MouseEvent) => event.preventDefault();
 
 export async function invoke_backend<T>(command: string, args?: InvokeArgs): Promise<T> {
     return new Promise((resolve, reject) => {

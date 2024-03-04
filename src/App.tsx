@@ -12,8 +12,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { ScrollArea } from "@mantine/core";
-import { HeaderBar } from '@/components/Layout/HeaderBar/HeaderBar';
-import Carousel from '@/components/Carousel';
+import { Header } from '@/components/Layout/HeaderBar/HeaderBar';
+import { Carousel } from '@/components/Carousel';
 
 const query_client = new QueryClient({
   defaultOptions: { queries: {
@@ -21,7 +21,7 @@ const query_client = new QueryClient({
   }},
 });
 
-function App() {
+export default function App() {
   return (
     <MantineProvider>
     <QueryClientProvider client={query_client}>
@@ -32,7 +32,7 @@ function App() {
         </div>
 
         <div className={classes.top_container}>
-          <HeaderBar />
+          <Header />
         </div>
         <div className={classes.content_container}>
           <Carousel />
@@ -44,5 +44,3 @@ function App() {
     </MantineProvider>
   );
 }
-
-export default App;
