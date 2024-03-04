@@ -1,8 +1,6 @@
 @import "./Common.module.css";
 
 .navigation {
-    composes: common-styles from "./Common.module.css";
-
     margin-left: calc(var(--mantine-spacing-md) * -1);
     margin-right: calc(var(--mantine-spacing-md) * -1);
 }
@@ -16,6 +14,9 @@
 
 .release_block {
     margin-top: 10px;
+
+    width: 43px;
+    height: 22.6px;
 }
 
 .navigation_category {

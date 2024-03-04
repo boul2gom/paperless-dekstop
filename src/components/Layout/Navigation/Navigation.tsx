@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { NavigationCategory, toggle_category } from "@/components/Layout/Navigation/NavigationCategory";
 
 import classes from "@/styles/Layout.module.css";
 import { IconGauge, IconFolderSearch, IconFileDescription, IconFolderCog, IconAdjustments } from "@tabler/icons-react";
+import { Code, Group, Skeleton, Image } from "@mantine/core";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { fetcher } from "@/components/Utils/Utils";
+
+import logo from "@/assets/paperless-ngx.png";
 
 const main_categories = [
   { label: "Dashboard", icon: IconGauge },
@@ -37,6 +42,21 @@ const linked_categories = [
   }
 ];
 
+const ReleaseSkeleton = () => { 
+  return (<Skeleton radius="xs" className={classes.release_block} />);
+};
+
+const ReleaseBlock = () => {
+  const { data } = useSuspenseQuery({
+      queryKey: ["latest_release"],
+      queryFn: () => fetcher<string>("latest_release"),
+  });
+
+  return (
+      <Code fw={700} className={classes.release_block}>{data}</Code>
+  );
+}
+
 export function Navigation() {
   const [categories_opened, set_categories_opened] = useState(
       linked_categories.map((category) => category.initially_opened || false)
@@ -56,10 +76,19 @@ export function Navigation() {
   );
 
   return (
-      <nav className={classes.navigation}>
-        <div className={classes.category_links_inner}>
-          {categories.map((category) => <div key={category.key}>{category}</div>)}
-        </div>
-      </nav>
+      <>
+        <Group justify="space-between" className={classes.logo}>
+          <Image src={logo} alt="Paperless Logo" width={159} height={60} />
+          <Suspense fallback={<ReleaseSkeleton />}>
+            <ReleaseBlock />
+          </Suspense>
+        </Group>
+
+        <nav className={classes.navigation}>
+          <div className={classes.category_links_inner}>
+            {categories.map((category) => <div key={category.key}>{category}</div>)}
+          </div>
+        </nav>
+      </>
   );
 }

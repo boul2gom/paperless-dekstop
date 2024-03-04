@@ -1,15 +1,11 @@
 @import "./Common.module.css";
 
 .page_container {
-    composes: common-styles from "./Common.module.css";
-
     height: var(--window-height);
     width: var(--window-width);
 }
 
 .navigation_container {
-    composes: common-styles from "./Common.module.css";
-
     height: var(--navigation-height);
     width: var(--navigation-width);
 
@@ -25,8 +21,6 @@
 }
 
 .top_container {
-    composes: common-styles from "./Common.module.css";
-
     height: var(--top-container-height);
     width: var(--top-container-width);
 
@@ -45,8 +39,6 @@
 }
 
 .content_container {
-    composes: common-styles from "./Common.module.css";
-
     height: var(--content-container-height);
     width: var(--content-container-width);
 

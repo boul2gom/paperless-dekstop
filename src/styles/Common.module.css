@@ -1,4 +1,4 @@
-.common-styles {
+:root {
     --common-background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
 
     --common-raw-border: rem(1px) solid;
