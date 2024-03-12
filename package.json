@@ -34,7 +34,7 @@
     "recharts": "^2.12.2"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.20.1",
+    "@tanstack/eslint-plugin-query": "^5.27.3",
     "@tanstack/react-query-devtools": "^5.25.0",
     "@tauri-apps/cli": "^1.5.10",
     "@types/node": "^20.11.25",
