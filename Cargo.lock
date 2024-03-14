@@ -1984,7 +1984,7 @@ dependencies = [
  "httpdate",
  "itoa 1.0.10",
  "pin-project-lite",
- "socket2 0.4.10",
+ "socket2 0.5.6",
  "tokio",
  "tower-service",
  "tracing",
@@ -2920,7 +2920,7 @@ dependencies = [
 [[package]]
 name = "paperless-rs"
 version = "0.1.5"
-source = "git+https://github.com/boul2gom/paperless-rs?branch=develop#5857dbd2284081102cfe8f848fa72cf653cf9072"
+source = "git+https://github.com/boul2gom/paperless-rs?branch=develop#2e70d44bbf1e9f0bc75f61ee35efc38ab946da16"
 dependencies = [
  "async-trait",
  "base64 0.22.0",
